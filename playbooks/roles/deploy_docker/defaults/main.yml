@@ -1,0 +1,16 @@
+---
+# defaults for deploy_docker role
+
+# local IP for Devtools instance
+NEXUS_SERVER_IP: "{{ devtools_aws_server_local }}"
+NEXUS_DOCKER_PORT: 5000
+#MAVEN_REPOSTITORY: docker-repository
+MAVEN_LOGIN: dell
+MAVEN_PASSWORD: 159632
+
+DOCKER_GROUP: docker
+DOCKER_USER: docker
+DOCKER_IMAGE_NAME: javapp
+
+JAVAPP_SEVICE_PORT: 8080
+JAVAPP_SERVICE_DEPLOY_PORT: 8082

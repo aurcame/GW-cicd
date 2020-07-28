@@ -1,0 +1,5 @@
+---
+  - hosts: "{{ host | default('deploy_artifact') }}"
+    become: true
+    roles:
+      - deploy_docker

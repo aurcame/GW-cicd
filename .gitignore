@@ -1,0 +1,5 @@
+# ignore git settings
+.git
+
+# ignore swap files
+*.swp

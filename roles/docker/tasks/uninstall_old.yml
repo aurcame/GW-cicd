@@ -1,0 +1,8 @@
+- name: Uninstall older versions of Docker
+  yum:
+   name: "{{ item }}"
+   state: absent
+   update_cache: yes
+  loop:
+    "{{ UNINSTALL_OLD_LIST }}"
+  when: ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS'

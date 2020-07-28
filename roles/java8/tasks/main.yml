@@ -1,0 +1,7 @@
+---
+- name: Install Java8 from Amazon or CentOS repos
+  yum:
+    name: java-1.8.0-openjdk-devel
+    update_cache: yes
+    state: present
+  #when: ansible_os_family == 'RedHat' and ansible_distribution == 'CentOS'

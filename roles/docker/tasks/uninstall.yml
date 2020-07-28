@@ -1,0 +1,12 @@
+- include: stop.yml
+
+- include: uninstall_old.yml
+
+- name: Uninstall newer versions of Docker
+  yum:
+   name: "{{ item }}"
+   state: absent
+   update_cache: yes
+  loop:
+    "{{ INSTAL_UNINSTALL_LIST }}"
+  when: ansible_os_family == 'RedHat'

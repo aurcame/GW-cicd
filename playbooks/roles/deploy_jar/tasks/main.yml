@@ -1,0 +1,21 @@
+---
+- name: Download latest version of jar artifact from Nexus repository
+  get_url:
+    url: http://{{ NEXUS_SERVER_IP }}:{{ NEXUS_SERVER_PORT }}/service/rest/v1/search/assets/download?sort=version&repository={{ MAVEN_REPOSTITORY }}&maven.groupId={{ MAVEN_GROUPID }}&maven.artifactId={{ MAVEN_ARTIFACTID }}&maven.extension={{ MAVEN_EXTENTION }}
+    dest: /home/{{ JAVAAPP_USER }}/temp.jar
+    force: yes # force_basic_auth: yes
+    # Using anonymouse authorisation to Nexus repository;
+    # current code will be uploaded to public Github repository
+    # username: ==
+    # password: ==
+
+- name: Install latest artifact as systemd service
+  template:
+    src: javapp.service.j2
+    dest: /etc/systemd/system/{{ SYSTEMD_SERVICE_NAME }}.service
+
+- name: run {{ SYSTEMD_SERVICE_NAME }} service
+  systemd:
+    name: "{{ SYSTEMD_SERVICE_NAME }}"
+    state: restarted
+    daemon_reload: yes

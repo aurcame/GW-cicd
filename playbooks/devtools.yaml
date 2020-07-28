@@ -1,0 +1,50 @@
+- name: Setup DevTools instance. Install Java8, Maven, Git, Jenkins, Ansible and Nexus tools
+  hosts: devtools
+  roles:
+    # Create and enable 3Gb swapfile to solve "out of memory" error
+    # during maven build
+     - { role: geerlingguy.swap, swap_file_size_mb: 3072}
+     # Install java-1.8.0
+     - { role: java8 }
+     # Install and configure Nexus3 OSS Artifact Repository
+     - { role: sansible.nexus, sansible_nexus_configuration_admin_password: initpass }
+     # Download and setup maven 3.6.2
+     - { role: tecris.maven, maven_major: 3, maven_version: 3.6.3, maven_home_parent_directory: /opt }
+     # Add EPEL repository, to be able to install Ansible with "yum install" command
+     - { role: geerlingguy.repo-epel, centos_version: 7}
+  become: True
+  tasks:
+
+    - name: Install Ansible from EPEL-repository
+      yum:
+        name: ansible
+        update_cache: yes
+        state: present
+
+    - name: Install Git from Amazon or CentOS repos
+      yum:
+        name: git
+        update_cache: yes
+        state: present
+
+    - name: Check if Jenkins Repository is Installed
+      yum_repository:
+        name: jenkins
+        state: present
+        description: Official Jenkins Yum Repo
+        baseurl: http://pkg.jenkins.io/redhat-stable
+        gpgkey: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+        gpgcheck: yes
+        enabled: yes
+
+    - name: Install Jenkins from Jenkins repos
+      yum :
+        name: jenkins
+        update_cache: yes
+        state: present
+
+    - name: Enable and Start the Jenkins Service
+      service:
+        name: jenkins
+        enabled: yes
+        state: started

@@ -1,0 +1,24 @@
+---
+# defaults file for docker
+DOCKER_EDITION: 'ce'
+DOCKER_REPO_URL: https://download.docker.com/linux/centos/docker-ce.repo
+
+UNINSTALL_OLD_LIST:
+  - docker
+  - docker-common
+  - docker-client
+  - docker-client-latest
+  - docker-latest
+  - docker-latest-logrotate
+  - docker-logrotate
+  - docker-engine
+
+REQUIREMENTS_LIST:
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+
+INSTAL_UNINSTALL_LIST:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
