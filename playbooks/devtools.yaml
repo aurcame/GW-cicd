@@ -33,7 +33,7 @@
         state: present
         description: Official Jenkins Yum Repo
         baseurl: http://pkg.jenkins.io/redhat-stable
-        gpgkey: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+        gpgkey: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
         gpgcheck: yes
         enabled: yes
 

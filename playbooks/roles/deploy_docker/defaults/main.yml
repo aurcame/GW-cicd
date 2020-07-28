@@ -5,8 +5,8 @@
 NEXUS_SERVER_IP: "{{ devtools_aws_server_local }}"
 NEXUS_DOCKER_PORT: 5000
 #MAVEN_REPOSTITORY: docker-repository
-MAVEN_LOGIN: dell
-MAVEN_PASSWORD: 159632
+MAVEN_LOGIN: admin
+MAVEN_PASSWORD: 1596321
 
 DOCKER_GROUP: docker
 DOCKER_USER: docker

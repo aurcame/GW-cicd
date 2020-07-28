@@ -3,7 +3,7 @@
 
 [devtools]
 devtools_aws_server ansible_host=10.0.1.101 ansible_port=22
-
+# 10.0.1.101
 [ci]
 ci_aws_server ansible_host=10.0.1.102 ansible_port=22
 
