@@ -48,4 +48,4 @@ sansible_nexus_service_start_on_boot: yes
 sansible_nexus_ulimit: 65536
 sansible_nexus_user: nexus
 # sansible_nexus_version: 3.14.0-04
-sansible_nexus_version: 3.25.1
+sansible_nexus_version: 3.25.0-03
