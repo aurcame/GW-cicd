@@ -43,5 +43,4 @@
     restart: yes
     restart_policy: unless-stopped
     published_ports:
-      #
      - "{{ JAVAPP_SERVICE_DEPLOY_PORT }}:{{ JAVAPP_SEVICE_PORT }}"
