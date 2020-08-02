@@ -19,4 +19,4 @@ DOCKER_IMAGE_NAME: javapp
 
 JAVAAPP_SERVICE_PORT: 8080
 
-BUILD_NUMBER: "{{ lookup('file', '/var/lib/jenkins/build.number', errors='warn') }}"
+BUILD_NUMBER: "{{ lookup('file', '/var/lib/jenkins/build.number', host='10.0.1.101', errors='warn') }}"
